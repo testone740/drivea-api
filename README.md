@@ -1,6 +1,6 @@
 # Backend Project: drivea-api
 
-## Chapter 7: Setup Project,
+## Chapter 7: Setup Project
 
 - https://youtu.be/3X__DaWC3mY?t=24948
 
@@ -22,3 +22,12 @@
 ```sh
 npm install @neondatabase/serverless
 ```
+
+## Chapter 8: User Authentication
+
+- Create APIs for user authentication
+- https://youtu.be/3X__DaWC3mY?t=26610
+
+## Chapter 9: Folder API
+
+- https://youtu.be/3X__DaWC3mY?t=28740
