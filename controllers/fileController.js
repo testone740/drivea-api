@@ -82,7 +82,7 @@ export const getFiles = async (req, res) => {
   try {
     const { folder, folder_id, search, sort = 'name_asc', page = 1, limit = 50 } = req.query;
     const pageNum = Math.max(1, parseInt(page, 10) || 1);
-    const limitNum = Math.max(1, parseInt(page, 10) || 50);
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 50));
     const offset = (pageNum - 1) * limitNum;
     const orderBy = SORT_MAP[sort] || SORT_MAP.name_asc;
 
