@@ -31,3 +31,13 @@ npm install @neondatabase/serverless
 ## Chapter 9: Folder API
 
 - https://youtu.be/3X__DaWC3mY?t=28740
+
+## Chapter 10: Neon Object Storage
+
+- https://youtu.be/3X__DaWC3mY?t=32865
+
+- https://neon.com/docs/storage/get-started
+
+```sh
+npm i @aws-sdk/client-s3 @aws-sdk/s3-request-presigner dotenv
+```

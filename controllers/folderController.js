@@ -112,9 +112,14 @@ export const renameFolder = async (req, res) => {
     }
 
     const [folder] = await sql`
-      UPDATE folders set name = ${name.trim()}, updated_at = NOW()
+      UPDATE folders
+      SET name = ${name.trim()}, updated_at = NOW()
       WHERE id = ${req.params.id} AND owner_id = ${req.user.id} AND is_trashed = false
       RETURNING *`;
+
+    if (!folder) {
+      return res.status(404).json({ error: 'Folder not found.' });
+    }
 
     return res.status(200).json({ folder });
   } catch (err) {
@@ -243,7 +248,6 @@ export const permanentDeleteFolder = async (req, res) => {
       return res.status(404).json({ error: 'Folder not found.' });
     }
 
-    // BUG: https://youtu.be/3X__DaWC3mY?t=32603
     await permanentDeleteFolderHierarchy(folder.id, req.user.id);
 
     return res.status(200).json({ message: 'Folder permanently deleted.' });
