@@ -24,7 +24,7 @@ export const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
     if (!name?.trim() || !email?.trim() || !password?.trim()) {
       return res.status(400).json({
-        error: 'Name, email, and passwored are required',
+        error: 'Name, email, and password are required',
       });
     }
 
@@ -42,7 +42,7 @@ export const registerUser = async (req, res) => {
     const storageLimit = Number(process.env.MAX_STORAGE_PER_USER || 1073741824);
 
     const [user] = await sql`
-      INSERT INTO users (name, email, password, storageLimit)
+      INSERT INTO users (name, email, password, storage_limit)
       VALUES (${name.trim()}, ${normalizedEmail}, ${hashedPassword}, ${storageLimit})
       RETURNING id, name, email, storage_used, storage_limit, created_at, updated_at`;
 
